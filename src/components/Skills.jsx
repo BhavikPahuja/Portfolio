@@ -12,7 +12,10 @@ const skills = [
 
 export default function Skills() {
   return (
-    <section id="skills" className="min-h-screen flex flex-col justify-center items-center px-6 py-24">
+    <section
+      id="skills"
+      className="min-h-screen flex flex-col justify-center items-center px-6 py-24"
+    >
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -21,21 +24,29 @@ export default function Skills() {
       >
         Skills
       </motion.h2>
-      <div className="w-full max-w-2xl space-y-8">
+      <div className="w-full md:w-7/12 space-y-8">
         {skills.map((skill, i) => (
-          <motion.div
+          <div
             key={skill.name}
-            initial={{ width: 0 }}
-            whileInView={{ width: `${skill.level}%` }}
-            transition={{ duration: 1 + i * 0.2 }}
-            className="flex items-center"
+            className="flex justify-center items-center flex-col sm:flex-row bg-white/10 rounded-full p-4 shadow-lg hover:shadow-xl transition-shadow duration-300 hover:bg-white/20 group text-gray-200 justify-between hover:text-white hover:shadow-2xl w-full"
           >
-            <span className="w-32 text-lg font-semibold text-white">{skill.name}</span>
-            <div className="flex-1 h-6 bg-white/20 rounded-full overflow-hidden ml-4">
-              <div className={`h-6 ${skill.color} rounded-full shadow-lg`} style={{ width: `${skill.level}%` }} />
+            <span className="w-32 text-lg text-center font-semibold text-white mb-2 sm:mb-0">
+              {skill.name}
+            </span>
+            <div className="flex-1 h-6 bg-white/20 rounded-full ml-0 sm:ml-4 w-full mb-2 sm:mb-0">
+              <motion.div
+                className={`h-6 ${skill.color} rounded-full shadow-lg`}
+                initial={{ width: 0 }}
+                whileInView={{ width: `${skill.level}%` }}
+                transition={{ duration: 1 + i * 0.2 }}
+                viewport={{ once: false, amount: 0.2 }}
+                style={{ maxWidth: "100%" }}
+              />
             </div>
-            <span className="ml-4 text-white font-bold">{skill.level}%</span>
-          </motion.div>
+            <span className="ml-0 sm:ml-4 text-white font-bold">
+              {skill.level}%
+            </span>
+          </div>
         ))}
       </div>
     </section>
