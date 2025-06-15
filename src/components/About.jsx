@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import logo from "../media/logo.png";
 
 export default function About() {
   return (
@@ -14,7 +15,7 @@ export default function About() {
       >
         <div className="flex flex-col items-center">
           <img
-            src="https://images.stockcake.com/public/0/6/2/062d72ea-1535-44f9-a161-69da4109beaa_medium/hacker-in-action-stockcake.jpg"
+            src={logo}
             alt="Avatar"
             className="w-36 h-36 rounded-full shadow-lg border-4 border-blue-100 mb-4 transition-transform duration-300 hover:scale-105"
           />
