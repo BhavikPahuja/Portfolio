@@ -94,6 +94,7 @@ export default function Hero() {
           <a
             href="https://drive.google.com/file/d/1BYOfqkvYEHlILPKDS-2tP4kNu2s6VYpi/view?usp=sharing"
             target="_blank"
+            rel="noreferrer"
             className="border border-gray-600 hover:border-white text-gray-300 hover:text-white px-8 py-3 rounded-full font-medium transition-all duration-300 hover:scale-105 flex items-center gap-2"
           >
             <HiDownload /> Download CV
