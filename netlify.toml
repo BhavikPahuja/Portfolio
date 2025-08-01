@@ -1,0 +1,111 @@
+[build]
+  publish = "build"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+
+# Build settings
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+# Headers for security and performance
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Zoho verification redirect
+[[redirects]]
+  from = "/zohoverify/verifyforzoho.html"
+  to = "/zohoverify/verifyforzoho.html"
+  status = 200
+  force = false
+
+# SPA fallback for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin", "member"]}
+
+# General SPA fallback
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# API proxy (if you have backend)
+# [[redirects]]
+#   from = "/api/*"
+#   to = "https://your-backend-api.com/api/:splat"
+#   status = 200
+#   force = true
+
+# Contact form handling (if using Netlify Forms)
+# [[redirects]]
+#   from = "/contact"
+#   to = "/contact-success"
+#   status = 200
+#   conditions = {Role = ["admin"]}
+
+# Error pages
+# [[redirects]]
+#   from = "/404"
+#   to = "/404.html"
+#   status = 404
+
+# Environment-specific redirects
+# [context.production]
+#   command = "npm run build"
+#   [context.production.environment]
+#     NODE_ENV = "production"
+
+# [context.deploy-preview]
+#   command = "npm run build"
+
+# [context.branch-deploy]
+#   command = "npm run build"
+
+# Functions (if you use Netlify Functions)
+# [functions]
+#   directory = "netlify/functions"
+
+# Forms (if you use Netlify Forms)
+# [forms]
+#   spam_action = "block"
