@@ -23,7 +23,10 @@ const jobs = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 px-4 bg-transparent animate-fadeIn">
+    <section
+      id="experience"
+      className="py-24 px-4 bg-transparent animate-fadeIn"
+    >
       <motion.h2
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -42,10 +45,14 @@ export default function Experience() {
             className="bg-white/10 rounded-2xl shadow-xl p-8 hover:scale-105 transition-transform duration-300 animate-slideInUp"
           >
             <div className="flex justify-between items-center mb-2">
-              <span className="text-xl font-bold text-blue-200">{job.role}</span>
+              <span className="text-xl font-bold text-blue-200">
+                {job.role}
+              </span>
               <span className="text-sm text-gray-300">{job.period}</span>
             </div>
-            <div className="text-blue-400 font-semibold mb-2">{job.company}</div>
+            <div className="text-blue-400 font-semibold mb-2">
+              {job.company}
+            </div>
             <div className="text-gray-200">{job.desc}</div>
           </motion.div>
         ))}
